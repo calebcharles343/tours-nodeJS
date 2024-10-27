@@ -1,6 +1,6 @@
-const express = require('express');
-const userController = require('./../controllers/userController');
-const authController = require('./../controllers/authController');
+const express = require("express");
+const userController = require("./../controllers/userController");
+const authController = require("./../controllers/authController");
 
 const router = express.Router();
 
@@ -10,18 +10,21 @@ const router = express.Router();
 //These are special end points that do not 100% fit the rest philosophy
 
 /*//////////////////////*/
-router.post('/signup', authController.signup);
+router.post("/signup", authController.signup);
+router.post("/login", authController.login);
+router.post("/forgotPassword", authController.forgotPassword);
+// router.post("/resetPassword", authController.resetPassword);
 
 /*//////////////////////*/
 /*BASIC CRUD ROUTE*/
 /*//////////////////////*/
 router
-  .route('/')
+  .route("/")
   .get(userController.getAllUsers)
   .post(userController.createUser);
 
 router
-  .route('/:id')
+  .route("/:id")
   .get(userController.getUser)
   .patch(userController.updateUser)
   .delete(userController.deleteUser);
